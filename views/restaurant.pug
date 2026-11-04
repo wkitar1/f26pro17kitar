@@ -2,19 +2,34 @@ extends layout
 
 block content
   h1= title
-  p Welcome to my server for Assignment 10
-  button(type="button", class="btn btn-secondary", onclick="reduce()") Sample Button
-  div#use take some away
-
-  script.
-    let current=11;
-    let quantity=2;
-    function reduce(){
-      current = current-quantity;
-      if(current<0){
-        current=0;
+  -
+    let results =[
+      {
+        name: "Bella Italia",
+        cuisine: "Italian",
+        capacity: 85,
+        city: "Chicago"
+      },
+      {
+        name: "Raku",
+        cuisine: "Japanese",
+        capacity: 40,
+        city: "Maryville"
+      },
+      {
+        name: "Le Petit Cafe",
+        cuisine: "French",
+        capacity: 60,
+        city: "Kansas City"
       }
-      document.getElementById("use").innerHTML= `Reduced by ${quantity} to ${current}`;
-    }
-
+    ]
+  div.container-fluid
+    div.row
+      each restaurant in results
+        div.col-sm-2
+          h3 #{restaurant.name}
+          p Cuisine: #{restaurant.cuisine}
+          p Capacity: #{restaurant.capacity}
+          p City: #{restaurant.city}
+  
 
